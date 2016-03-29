@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
 
+import json
 import os
 from py.bottle import (
+    BaseRequest,
     get,
     post,
     request,
@@ -47,48 +49,59 @@ def static_test_json(filename):
 
 @get('/')
 def view_index():
-    return static_file('index.html', root='html')
-
-
-@get('/admin/category')
-def view_category():
-    return static_file('category.html', root='html')
-
-
-@get('/admin/category_bulk')
-def view_category_bulk():
-    return static_file('category_bulk.html', root='html')
+    return static_file('index.html', root='static/html')
 
 
 @get('/graph')
 def view_graph():
-    return static_file('graph.html', root='html')
+    return static_file('graph.html', root='static/html')
 
 
 @get('/ranking')
 def view_ranking():
-    return static_file('ranking.html', root='html')
+    return static_file('ranking.html', root='static/html')
 
 
 @get('/rate')
 def view_rate():
-    return static_file('rate.html', root='html')
+    return static_file('rate.html', root='static/html')
+
+
+@get('/admin')
+def view_admin_hub():
+    return static_file('admin.html', root='static/html')
+
+
+@get('/admin/category')
+def view_category():
+    return static_file('category.html', root='static/html')
+
+
+@get('/admin/category_bulk')
+def view_category_bulk():
+    return static_file('category_bulk.html', root='static/html')
 
 
 @get('/admin/status')
 def view_status():
-    return static_file('status.html', root='html')
+    return static_file('status.html', root='static/html')
 
 
 @get('/admin/test')
 def view_test():
-    return static_file('test.html', root='html')
+    return static_file('test.html', root='static/html')
 
 
 @post('/admin/database')
 def update_database():
+    print ("new db received")
     database = request.json
-    print (database)
+    with open("json/database.json", "w") as current_file:
+        json.dump(database, current_file, sort_keys=True, indent=4)
+
+
+# set large post size
+BaseRequest.MEMFILE_MAX = 1024 * 1024
 
 
 def main():
