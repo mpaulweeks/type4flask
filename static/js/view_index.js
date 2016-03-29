@@ -132,7 +132,7 @@
 
     function index_url(categories, date_string){
         categories = categories || [];
-        var prefix = tool.is_local ? "index.html" : "";
+        var prefix = "";
         var params = date_string == null ? [] : ["timestamp=" + date_string];
         for (var i = 0; i < categories.length; i++){
             params.push("category=" + categories[i]);

@@ -1,8 +1,5 @@
 (function(module){
 
-    module.is_local = window.location.href.indexOf('file:///') > -1;
-    module.is_firefox = navigator.userAgent.toLowerCase().indexOf('firefox') > -1;
-
     module.str_format = function(str) {
         var args = arguments;
         return str.replace(/{(\d+)}/g, function(match, number) { 
@@ -59,8 +56,16 @@
     }
 
     module.submit_data = function(new_data){
-        $('body').empty();
-        document.body.appendChild(document.createElement('pre')).innerHTML = JSON.stringify(new_data, undefined, 4);
+        $.ajax({
+            url: '/admin/database',
+            data: new_data,
+            type: 'POST',
+            contentType: "charset=utf-8",
+        }).done(function (){
+            window.location.href = '/';
+        }).fail(function (){
+            alert('error');
+        });
     }
 
     // http://stackoverflow.com/questions/5560248/programmatically-lighten-or-darken-a-hex-color-or-rgb-and-blend-colors
@@ -88,8 +93,8 @@
                     '</ul></div></div></nav>'
     );
     module.load_navbar = function(){
-        var suffix = module.is_local ? '.html' : '';
-        var index = module.is_local ? 'index.html' : '/';
+        var suffix = '';
+        var index = '/';
         $('.nav-parent').html(module.str_format(NAVBAR, suffix, index));
     }
 

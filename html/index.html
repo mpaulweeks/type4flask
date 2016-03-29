@@ -3,7 +3,7 @@
 <head>
     <title> Type 4 </title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="static/type4/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="img/favicon.png" type="image/x-icon">
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
 
@@ -18,18 +18,15 @@
 
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-transition.js"></script>
     <script type="text/javascript" src="http://twitter.github.io/bootstrap/assets/js/bootstrap-collapse.js"></script>
-    <link rel="stylesheet" href="static/type4/bootstrap.css">
-    <script src="static/type4/bootstrap.js"></script>
-    <link rel="stylesheet" href="static/type4/style.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/bootstrap.js"></script>
+    <link rel="stylesheet" href="css/style.css">
 
     <script src="js/module.js"></script>
     <script src="js/tool.js"></script>
     <script src="js/store.js"></script>
     <script src="js/repo.js"></script>
-    <script src="js/elo.js"></script>
-    <script src="js/ranking.js"></script>
     <script src="js/view_index.js"></script>
-    <script src="js/view_ranking.js"></script>
     <script src="js/main.js"></script>
 </head>
 <body>
@@ -37,32 +34,45 @@
 <span class="nav-parent"></span>
 
 <div class="container">
-    <div class="col-md-2 ranking-block">
-        <h3 class="text-center">Judges</h3>
-        <form action="" class="form-group" id="judges"></form>
-    </div>
-    <div class="col-md-3 ranking-block">
-        <h3 class="text-center">Categories</h3>
-        <form action="" class="form-group" id="categories"></form>
-    </div>
-    <div class="col-md-7 ranking-block">
-        <h3 class="text-center">Results</h3>
-        <div class="col-md-6">
-            <h4 class="text-center">Highest Scoring</h4>
-            <div id="rankings-descend"></div>
-            <br/>
-        </div>
-        <div class="col-md-6">
-            <h4 class="text-center">Lowest Scoring</h4>
-            <div id="rankings-ascend"></div>
-            <br/>
-        </div>
-    </div>
+
+    <h2 id="title" class="text-center">loading js...</h2>
+    <hr/>
+
+    <div id="subtitle"></div>
+
+    <div id="list_added"></div>
+    <div id="list_removed"></div>
+    <div id="list_1"></div>
+
+    <h3 class="cardlist-title">Stats</h3>
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th class="text-right col-md-1"> Count </th>
+                <th class="text-right col-md-1"> Percent </th>
+                <th class="text-center"></th>
+                <th class="text-left"> Category </th>
+                <th class="col-md-1">  </th>
+                <th class="col-md-1">  </th>
+            </tr>
+        </thead>
+        <tbody id="filter_categories">
+        </tbody>
+    </table>
+
+    <h3 class="cardlist-title">Relevant Dates</h3>
+    <div id="dates" class="cardlistdisplay columned"></div>
+
+    <div id="list_2"></div>
+    <div id="list_3"></div>
+    <div id="list_4"></div>
+
 </div>
+
 
 <script type="text/javascript">
     $(document).ready(function () {
-        Module("main").ranking();
+        Module("main").index();
     });
 </script>
 <script src="js/gatherer_helper.js"></script>
