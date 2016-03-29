@@ -30,9 +30,19 @@ def static_js(filename):
     return static_file(filename, root='static/js')
 
 
+@get('/js/test/<filename>')
+def static_test_js(filename):
+    return static_file(filename, root='static/js/test')
+
+
 @get('/json/<filename>')
 def static_json(filename):
     return static_file(filename, root='json')
+
+
+@get('/json/test/<filename>')
+def static_test_json(filename):
+    return static_file(filename, root='static/json/test')
 
 
 @get('/')
@@ -40,12 +50,12 @@ def view_index():
     return static_file('index.html', root='html')
 
 
-@get('/category')
+@get('/admin/category')
 def view_category():
     return static_file('category.html', root='html')
 
 
-@get('/category_bulk')
+@get('/admin/category_bulk')
 def view_category_bulk():
     return static_file('category_bulk.html', root='html')
 
@@ -65,12 +75,12 @@ def view_rate():
     return static_file('rate.html', root='html')
 
 
-@get('/status')
+@get('/admin/status')
 def view_status():
     return static_file('status.html', root='html')
 
 
-@get('/test')
+@get('/admin/test')
 def view_test():
     return static_file('test.html', root='html')
 

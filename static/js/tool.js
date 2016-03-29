@@ -58,9 +58,10 @@
     module.submit_data = function(new_data){
         $.ajax({
             url: '/admin/database',
-            data: new_data,
             type: 'POST',
-            contentType: "charset=utf-8",
+            data: JSON.stringify(new_data),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
         }).done(function (){
             window.location.href = '/';
         }).fail(function (){
