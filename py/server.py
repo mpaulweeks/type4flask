@@ -37,12 +37,17 @@ def static_test_js(filename):
     return static_file(filename, root='static/js/test')
 
 
-@get('/json/<filename>')
+@get('/db/<filename>')
+def static_db(filename):
+    return static_file(filename, root='db')
+
+
+@get('/static/json/<filename>')
 def static_json(filename):
-    return static_file(filename, root='json')
+    return static_file(filename, root='static/json')
 
 
-@get('/json/test/<filename>')
+@get('/static/json/test/<filename>')
 def static_test_json(filename):
     return static_file(filename, root='static/json/test')
 
@@ -96,18 +101,18 @@ def view_test():
 def update_database():
     print ("new db received")
     database = request.json
-    with open("json/database.json", "w") as current_file:
+    with open("db/stack.json", "w") as current_file:
         json.dump(database, current_file, sort_keys=True, indent=4)
 
 
 @post('/api/rate')
 def update_ratings():
     print ("new rating received")
-    with open("json/ratings.json") as current_file:
+    with open("db/ratings.json") as current_file:
         ratings = json.load(current_file)
     record = request.json
     ratings.append(record)
-    with open("json/ratings.json", "w") as current_file:
+    with open("db/ratings.json", "w") as current_file:
         json.dump(ratings, current_file, sort_keys=True, indent=4)
 
 

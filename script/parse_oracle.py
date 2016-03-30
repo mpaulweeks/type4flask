@@ -6,9 +6,9 @@ def main(keyword):
     keyword = keyword.lower()
 
     names_out = set()
-    with open("json/AllCards.json") as json_file:
+    with open("static/json/AllCards.json") as json_file:
         all_cards = json.load(json_file)
-    with open("json/database.json") as current_file:
+    with open("db/stack.json") as current_file:
         current = json.load(current_file)
         card_names = set(c["name"].lower() for c in current["card"])
 
