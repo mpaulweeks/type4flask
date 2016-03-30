@@ -10,3 +10,6 @@ Thumbs.db
 # Temp
 nohup.out
 *.pid
+
+# Live
+db/*.json
