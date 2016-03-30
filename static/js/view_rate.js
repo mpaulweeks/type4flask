@@ -40,42 +40,26 @@
         return [card1, random_card([card1].concat(not_cards))];
     }
 
-    var count = 0;
-    var results = [];
     var options = [];
     var username = "";
     var next_cards = [];
 
-    var API_KEY = 'zi4GKdKKpJx4ledJ92-Xhw';
-    var EMAIL = 'type4stack@gmail.com';
-
-    function submit_data(){
-        var data = results;
-        results = [];
+    function submit_data(record){
         var to_submit = {
             username: username,
             timestamp: new Date(),
-            data: data,
+            data: [record],
         };
         $.ajax({
+            url: '/api/rate',
             type: 'POST',
-            url: 'https://mandrillapp.com/api/1.0/messages/send.json',
-            data: {
-                'key': API_KEY,
-                'message': {
-                    'from_email': EMAIL,
-                    'to': [{
-                        'email': EMAIL,
-                        'name': 'ROBOT',
-                        'type': 'to'
-                    }],
-                    'autotext': 'true',
-                    'subject': 'RATING DATA',
-                    'html': JSON.stringify(to_submit)
-                }
-            }
-        }).done(function(response) {
-            console.log(response);
+            data: JSON.stringify(to_submit),
+            contentType: "application/json; charset=utf-8",
+            dataType: "json",
+        }).done(function (){
+            console.log('rating submitted successfully');
+        }).fail(function (){
+            alert('rating failed to submit');
         });
     }
 
@@ -99,14 +83,7 @@
             winner: name,
             options: options
         };
-        results.push(record);
-        console.log(results);
-        if (count > 9){
-            count = 0;
-            submit_data();
-        } else {
-            count += 1;
-        }
+        submit_data(record);
         refresh_cards();
     }
 

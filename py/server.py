@@ -92,12 +92,23 @@ def view_test():
     return static_file('test.html', root='static/html')
 
 
-@post('/admin/database')
+@post('/api/database')
 def update_database():
     print ("new db received")
     database = request.json
     with open("json/database.json", "w") as current_file:
         json.dump(database, current_file, sort_keys=True, indent=4)
+
+
+@post('/api/rate')
+def update_ratings():
+    print ("new rating received")
+    with open("json/ratings.json") as current_file:
+        ratings = json.load(current_file)
+    record = request.json
+    ratings.append(record)
+    with open("json/ratings.json", "w") as current_file:
+        json.dump(ratings, current_file, sort_keys=True, indent=4)
 
 
 # set large post size

@@ -57,7 +57,7 @@
 
     module.submit_data = function(new_data){
         $.ajax({
-            url: '/admin/database',
+            url: '/api/database',
             type: 'POST',
             data: JSON.stringify(new_data),
             contentType: "application/json; charset=utf-8",
