@@ -1,8 +1,10 @@
-# type4static
-Type4 using static pages
+# type4flask
 
-- http://mpaulweeks.github.io/type4static/
-- http://mpaulweeks.github.io/type4static/category
-- http://mpaulweeks.github.io/type4static/category_bulk
-- http://mpaulweeks.github.io/type4static/status
-- http://mpaulweeks.github.io/type4static/test
+Website with info about my personal Type 4 Stack
+
+Most sorting/graphing/logic done via js in browser (originally built as purely static website)
+
+Webserver built in Python3 using Bottle
+
+- http://www.type4stack.com
+- http://type4.mpaulweeks.com
