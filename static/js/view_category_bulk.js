@@ -18,6 +18,7 @@
     function submit_edit(){
         var category = $('#category_picker').val();
 
+        var new_val = $('#set_true').is(":checked");
         var card_names = $('#card_names').val().split('\n');
         var changes = [];
         for (var i = 0; i < card_names.length; i++){
@@ -25,7 +26,7 @@
             var out = {};
             out.card_id = card.id;
             out.category = category;
-            out.new_val = true;
+            out.new_val = new_val;
             changes.push(out);
         }
         var new_data = repo.update_category(changes);
