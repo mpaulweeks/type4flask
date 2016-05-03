@@ -7,7 +7,6 @@ from flask import (
     request,
     render_template,
     send_file,
-    send_from_directory,
 )
 
 app = Flask(
@@ -106,7 +105,7 @@ def main():
     with open('server.pid', 'wt') as f:
         f.write(str(os.getpid()))
     app.run(
-        debug=True,
+        # debug=True,
         host='localhost',
         port=6100,
     )
