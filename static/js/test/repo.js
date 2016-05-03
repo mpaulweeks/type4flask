@@ -1,7 +1,7 @@
 
 function test_repo(callback){
 
-    var TEST_FILE = "/static/json/test/2015-10-04.json";
+    var TEST_FILE = "/json/test/2015-10-04.json";
     var tester = Module("tester").create("repo", callback);
     var store = Module("store");
     var repo = Module("repo");

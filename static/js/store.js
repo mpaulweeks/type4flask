@@ -4,8 +4,8 @@
 
 	var LINE = '<br/>';
 	var STACK_FILE = '/db/stack.json';
-	var MULTIVERSE_FILE = '/static/json/multiverse_ids.json';
-	var ALL_CARDS_FILE = '/static/json/AllCards.json';
+	var MULTIVERSE_FILE = '/json/multiverse_ids.json';
+	var ALL_CARDS_FILE = '/json/AllCards.json';
 	var RANKING_FILE = '/db/ratings.json';
 
 	module.data = null;

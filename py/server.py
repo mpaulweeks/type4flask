@@ -1,130 +1,110 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 
 import json
 import os
-from py.bottle import (
-    BaseRequest,
-    get,
-    post,
+from flask import (
+    Flask,
     request,
-    run,
-    static_file,
+    render_template,
+    send_file,
+    send_from_directory,
+)
+
+app = Flask(
+    __name__,
+    static_url_path='',
+    static_folder='../static',
 )
 
 
-@get('/favicon.ico')
+@app.route('/favicon.ico')
 def static_favicon():
-    return static_file('favicon.ico', root='static/img')
+    return app.send_render_template('img/favicon.ico')
 
 
-@get('/css/<filename>')
-def static_css(filename):
-    return static_file(filename, root='static/css')
+@app.route('/db/ratings.json')
+def static_db_ratings():
+    return send_file('../db/ratings.json')
 
 
-@get('/img/<filename>')
-def static_img(filename):
-    return static_file(filename, root='static/img')
+@app.route('/db/stack.json')
+def static_db_stack():
+    return send_file('../db/stack.json')
 
 
-@get('/js/<filename>')
-def static_js(filename):
-    return static_file(filename, root='static/js')
-
-
-@get('/js/test/<filename>')
-def static_test_js(filename):
-    return static_file(filename, root='static/js/test')
-
-
-@get('/db/<filename>')
-def static_db(filename):
-    return static_file(filename, root='db')
-
-
-@get('/static/json/<filename>')
-def static_json(filename):
-    return static_file(filename, root='static/json')
-
-
-@get('/static/json/test/<filename>')
-def static_test_json(filename):
-    return static_file(filename, root='static/json/test')
-
-
-@get('/')
+@app.route('/')
 def view_index():
-    return static_file('index.html', root='static/html')
+    return render_template('index.html')
 
 
-@get('/graph')
+@app.route('/graph')
 def view_graph():
-    return static_file('graph.html', root='static/html')
+    return render_template('graph.html')
 
 
-@get('/ranking')
+@app.route('/ranking')
 def view_ranking():
-    return static_file('ranking.html', root='static/html')
+    return render_template('ranking.html')
 
 
-@get('/rate')
+@app.route('/rate')
 def view_rate():
-    return static_file('rate.html', root='static/html')
+    return render_template('rate.html')
 
 
-@get('/admin')
+@app.route('/admin')
 def view_admin_hub():
-    return static_file('admin.html', root='static/html')
+    return render_template('admin.html')
 
 
-@get('/admin/category')
+@app.route('/admin/category')
 def view_category():
-    return static_file('category.html', root='static/html')
+    return render_template('category.html')
 
 
-@get('/admin/category_bulk')
+@app.route('/admin/category_bulk')
 def view_category_bulk():
-    return static_file('category_bulk.html', root='static/html')
+    return render_template('category_bulk.html')
 
 
-@get('/admin/status')
+@app.route('/admin/status')
 def view_status():
-    return static_file('status.html', root='static/html')
+    return render_template('status.html')
 
 
-@get('/admin/test')
+@app.route('/admin/test')
 def view_test():
-    return static_file('test.html', root='static/html')
+    return render_template('test.html')
 
 
-@post('/api/database')
+@app.route('/api/database', methods=['POST'])
 def update_database():
     print ("new db received")
-    database = request.json
+    database = request.get_json(cache=False)
     with open("db/stack.json", "w") as current_file:
         json.dump(database, current_file, sort_keys=True, indent=4)
 
 
-@post('/api/rate')
+@app.route('/api/rate', methods=['POST'])
 def update_ratings():
     print ("new rating received")
     with open("db/ratings.json") as current_file:
         ratings = json.load(current_file)
-    record = request.json
+    record = request.get_json(cache=False)
     ratings.append(record)
     with open("db/ratings.json", "w") as current_file:
         json.dump(ratings, current_file, sort_keys=True, indent=4)
 
 
 # set large post size
-BaseRequest.MEMFILE_MAX = 1024 * 1024
+app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 
 def main():
     with open('server.pid', 'wt') as f:
         f.write(str(os.getpid()))
-    run(
-        # server='cherrypy',
+    app.run(
+        debug=True,
         host='localhost',
         port=6100,
     )

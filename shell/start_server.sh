@@ -1,2 +1,2 @@
 #!/bin/sh
-python3 -m py.server
+python -m py.server
