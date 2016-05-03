@@ -61,7 +61,6 @@
             type: 'POST',
             data: JSON.stringify(new_data),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
         }).done(function (){
             window.location.href = '/admin';
         }).fail(function (){

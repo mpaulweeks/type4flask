@@ -83,6 +83,7 @@ def update_database():
     database = request.get_json(cache=False)
     with open("db/stack.json", "w") as current_file:
         json.dump(database, current_file, sort_keys=True, indent=4)
+    return 'ok'
 
 
 @app.route('/api/rate', methods=['POST'])
@@ -94,6 +95,7 @@ def update_ratings():
     ratings.append(record)
     with open("db/ratings.json", "w") as current_file:
         json.dump(ratings, current_file, sort_keys=True, indent=4)
+    return 'ok'
 
 
 # set large post size
