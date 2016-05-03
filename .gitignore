@@ -11,5 +11,8 @@ Thumbs.db
 nohup.out
 *.pid
 
+# Local
+venv
+
 # Live
 db/*.json
