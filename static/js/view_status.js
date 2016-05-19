@@ -30,8 +30,21 @@
 
         var card_names = $('#card_names').val().split('\n');
 
-        var new_data = repo.update_status(card_names, status_code, timestamp);
-        tool.submit_data(new_data);
+        var to_submit = {
+            card_names: card_names,
+            status_code: status_code,
+            timestamp: tool.string_from_date(timestamp)
+        }
+        $.ajax({
+            url: '/api/status',
+            type: 'POST',
+            data: JSON.stringify(to_submit),
+            contentType: "application/json; charset=utf-8",
+        }).done(function (){
+            window.location.href = '/admin';
+        }).fail(function (){
+            alert('error');
+        });
     }
 
 

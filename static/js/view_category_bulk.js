@@ -29,8 +29,16 @@
             out.new_val = new_val;
             changes.push(out);
         }
-        var new_data = repo.update_category(changes);
-        tool.submit_data(new_data);
+        $.ajax({
+            url: '/api/category',
+            type: 'PUT',
+            data: JSON.stringify(changes),
+            contentType: "application/json; charset=utf-8",
+        }).done(function (){
+            window.location.href = '/admin';
+        }).fail(function (){
+            alert('error');
+        });
     }
 
 })(Module('view_category_bulk'));

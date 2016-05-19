@@ -146,14 +146,6 @@
         return store.data.card;
     };
 
-    module.update_category = function(changes){
-        $.each(changes, function (index, change){
-            var card = module.get_card_by_id(change.card_id);
-            card[change.category] = change.new_val;
-        });
-        return store.data;
-    };
-
     module.get_relevant_dates = function(){
         var dates = {};
         for (var i = 0; i < store.data.status.length; i++){
@@ -181,56 +173,5 @@
         }
         return card_ids;
     };
-
-    function new_card(name){
-        var max_id = 0;
-        for (var i = 0; i < store.data.card.length; i++){
-            var cid = store.data.card[i].id;
-            if (cid > max_id){
-                max_id = cid;
-            }
-        }
-        var card = {
-            id: max_id + 1,
-            name: name
-        };
-        for (var i = 0; i < module.CATEGORIES.length; i++){
-            card[module.CATEGORIES[i]] = false;
-        }
-        store.data.card.push(card);
-        return card
-    }
-
-    function new_status(card, status_code, datetime){
-        var max_id = 0;
-        for (var i = 0; i < store.data.status.length; i++){
-            var sid = store.data.status[i].id;
-            if (sid > max_id){
-                max_id = sid;
-            }
-        }
-        var status = {
-            id: max_id + 1,
-            card_id: card.id,
-            status: status_code,
-            timestamp: tool.string_from_date(datetime)
-        };
-        store.data.status.push(status);
-    }
-
-    module.update_status = function(card_names, status_code, datetime){
-        for (var i = 0; i < card_names.length; i++){
-            var card_name = card_names[i];
-            if (card_name){
-                var card = module.get_card_by_name(card_name);
-                if (!card){
-                    card = new_card(card_name);
-                }
-                new_status(card, status_code, datetime);
-            }
-        }
-        return store.data;
-    }
-
 
 })(Module('repo'));
