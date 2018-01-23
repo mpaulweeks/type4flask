@@ -16,11 +16,13 @@
     // unique to the second
     return Math.floor((new Date()).getTime() / (1000));
   }
+  function getLastUpdate(){
+    return '20180123';
+  }
   function getJSON(url, bustCache, callback){
-    if (bustCache){
-      url = `${url}?v=${getTimestamp()}`;
-    }
-    $.getJSON(url, callback);
+    const timestamp = bustCache ? getTimestamp() : getLastUpdate();
+    const timestampUrl = `${url}?v=${timestamp}`;
+    $.getJSON(timestampUrl, callback);
   }
 
   module.load = function(callback, stack_file){
