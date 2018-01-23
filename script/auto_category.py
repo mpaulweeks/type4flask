@@ -4,6 +4,10 @@ import sys
 import add_category
 import parse_oracle
 
+"""
+script for quickly adding new categories to stack.json
+"""
+
 
 def main(new_category, keyword):
     add_category.main(new_category)

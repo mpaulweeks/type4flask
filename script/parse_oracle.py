@@ -1,6 +1,11 @@
 import json
 import sys
 
+"""
+used by auto_category
+run this with command line to manualy test
+"""
+
 
 def main(keyword):
     keyword = keyword.lower()
