@@ -85,11 +85,12 @@
 
     module.get_judges = function(ratings){
         var judges = {};
-        judges[UNKNOWN_JUDGE] = true;
 
         ratings.forEach(function (chunk){
             if (chunk.hasOwnProperty('username')){
                 judges[chunk.username] = true;
+            } else {
+                judges[UNKNOWN_JUDGE] = true;
             }
         });
 
