@@ -56,6 +56,11 @@ def static_db_ratings():
     return send_file('../db/ratings.json')
 
 
+@app.route('/db/ratings2018.json')
+def static_db_ratings_2018():
+    return send_file('../db/ratings2018.json')
+
+
 @app.route('/db/stack.json')
 def static_db_stack():
     return send_file('../db/stack.json')
@@ -184,11 +189,11 @@ def update_database():
 @app.route('/api/rate', methods=['POST'])
 def update_ratings():
     print ("new rating received")
-    with open("db/ratings.json") as current_file:
+    with open("db/ratings2018.json") as current_file:
         ratings = json.load(current_file)
     record = request.get_json(cache=False)
     ratings.append(record)
-    with open("db/ratings.json", "w") as current_file:
+    with open("db/ratings2018.json", "w") as current_file:
         json.dump(ratings, current_file, sort_keys=True, indent=4)
     return 'ok'
 

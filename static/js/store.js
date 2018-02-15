@@ -6,7 +6,7 @@
   var STACK_FILE = '/db/stack.json';
   var MULTIVERSE_FILE = '/json/multiverse_ids.json';
   var ALL_CARDS_FILE = '/json/AllCards.json';
-  var RANKING_FILE = '/db/ratings.json';
+  var RANKING_FILE = '/db/ratings2018.json';
 
   module.data = null;
   module.all_cards = null;
