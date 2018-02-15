@@ -55,7 +55,6 @@
             type: 'POST',
             data: JSON.stringify(to_submit),
             contentType: "application/json; charset=utf-8",
-            dataType: "json",
         }).done(function (){
             console.log('rating submitted successfully');
         }).fail(function (){
