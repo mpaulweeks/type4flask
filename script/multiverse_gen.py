@@ -6,7 +6,7 @@ with open("static/json/AllSets.json") as json_file:
 for card_set in sets.values():
     for card in card_set["cards"]:
         name = card["name"].lower()
-        mid = card.get("multiverseid")
+        mid = card.get("multiverseId")
         if mid:
             out[name] = mid
 
