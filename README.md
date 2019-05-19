@@ -11,12 +11,10 @@ Webserver built in Python3 using Bottle
 
 ### to update cards
 
-- copy over new files for AllCards.json and AllSets.json
-- ```python script/multiverse_gen.py```
-- add to git and push to `master`
-- ssh into server, cd into `type4flask/`
-- `git pull`
-- refresh the page
+```bash
+# confirm the two overwrites, then it commits to git
+./bash/update_json.sh
+```
 
 ### todo
 
