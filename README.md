@@ -12,7 +12,7 @@ Webserver built in Python3 using Bottle
 ### to update cards
 
 ```bash
-# confirm the two overwrites, then it commits to git
+# ssh into server, then run the following. confirm overwrites
 ./bash/update_json.sh
 ```
 
