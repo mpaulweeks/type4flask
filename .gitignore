@@ -16,3 +16,4 @@ venv
 
 # Live
 db/*.json
+static/*.json
