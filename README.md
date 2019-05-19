@@ -11,9 +11,18 @@ Webserver built in Python3 using Bottle
 
 ### to update cards
 
+to update `multiverse_ids.json`
+
 ```bash
-# ssh into server, then run the following. confirm overwrites
 ./bash/update_json.sh
+
+# commit and push to git
+```
+
+to update the other json files on the server
+
+```bash
+./bash/download_json.sh
 ```
 
 ### todo
