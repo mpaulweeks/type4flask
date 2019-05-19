@@ -17,7 +17,7 @@
     return Math.floor((new Date()).getTime() / (1000));
   }
   function getLastUpdate(){
-    return '20180123';
+    return '20190519';
   }
   function getJSON(url, bustCache, callback){
     const timestamp = bustCache ? getTimestamp() : getLastUpdate();
