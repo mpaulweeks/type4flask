@@ -16,4 +16,7 @@ venv
 
 # Live
 db/*.json
-static/*.json
+
+# too big for git
+static/json/AllCards.json
+static/json/AllSets.json
