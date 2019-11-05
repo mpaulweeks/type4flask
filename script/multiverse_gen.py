@@ -1,7 +1,7 @@
 import json
 
 out = {}
-with open("static/json/AllSets.json") as json_file:
+with open("static/json/AllPrintings.json") as json_file:
     sets = json.load(json_file)
 for card_set in sets.values():
     for card in card_set["cards"]:

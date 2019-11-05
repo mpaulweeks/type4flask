@@ -20,3 +20,4 @@ db/*.json
 # too big for git
 static/json/AllCards.json
 static/json/AllSets.json
+static/json/AllPrintings.json
