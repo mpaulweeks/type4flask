@@ -19,6 +19,7 @@ CATEGORIES = [
     "is_creature",
     "is_artifact",
     "is_enchantment",
+    "is_planeswalker",
     "is_land",
     "is_counterspell",
     "is_masticore",
@@ -26,6 +27,7 @@ CATEGORIES = [
     "is_removal_creature",
     "is_removal_artifact",
     "is_removal_enchantment",
+    "is_removal_planeswalker",
     "is_removal_land",
     "is_confiscate",
     "is_morph",
@@ -36,6 +38,7 @@ CATEGORIES = [
     "is_reanimate",
     "is_flash_enabler",
     "is_hard_to_kill",
+    "makes_token",
     "is_stack_specific",
 ]
 
