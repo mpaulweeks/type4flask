@@ -6,6 +6,8 @@ import parse_oracle
 
 """
 script for quickly adding new categories to stack.json
+
+python script/auto_category.py is_planeswalker "Planeswalker -"
 """
 
 

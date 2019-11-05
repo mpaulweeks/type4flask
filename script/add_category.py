@@ -1,6 +1,9 @@
 import json
 import sys
 
+"""
+python script/add_category.py is_planeswalker
+"""
 
 def main(new_category):
     new_category = new_category.lower()
